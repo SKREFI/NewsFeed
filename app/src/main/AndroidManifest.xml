@@ -5,7 +5,7 @@
 
     //Get the user permision to use internet
     <uses-permission android:name="android.permission.INTERNET"/>
-    //Using it to check if the user has or not internet conection
+    //Check if the user has or not internet conection
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application

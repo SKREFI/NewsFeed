@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">News Feed</string>
+
+    <string name="no_internet_message">No internet connection!</string>
+    <string name="no_event_found">Sorry, there isn\'t any news available! Please try again latter!</string>
 </resources>
