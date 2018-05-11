@@ -1,5 +1,7 @@
 package com.skrefi.newsfeed;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,22 +29,26 @@ import static com.skrefi.newsfeed.Constants.SERVICE_UNAVAILABLE;
 public class Utils {
     private static final String TAG = Utils.class.getSimpleName();
 
-    public static List<Event> fetchEventsData(String urlString){
+    public static void printLog(String tag ,Exception e , String msg){
+        Log.e(tag , "ctrl_f_mee Error: " + msg + e );
+    }
+
+    public static List<Event> fetchEventsData(String urlString) {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            printLog(TAG,e,"InterruptedException");
             return null;
         }
 
         List<Event> events;
-        try{
+        try {
             URL url = createUrl(urlString);
             String jsonResponse;
             jsonResponse = makeHttpRequest(url);
             events = getDataFromJsonResponse(jsonResponse);
-        }catch(NullPointerException e){
-            e.printStackTrace();
+        } catch (NullPointerException e) {
+            printLog(TAG,e,"NullPointerException");
             return null;
         }
         return events;
@@ -65,7 +71,7 @@ public class Utils {
                 events.add(new Event(title, category, author, date, url));
             }
         } catch (JSONException e) {
-            e.printStackTrace();
+            printLog(TAG,e,"JSONException");
             return null;
         }
         return events;
@@ -73,27 +79,27 @@ public class Utils {
 
     private static String makeHttpRequest(URL url) {
         String jsonResponse = null;
-            try {
-                //Making the connection
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod(REQUEST_METHOD);
-                urlConnection.setReadTimeout(READ_TIME_OUT);
-                urlConnection.setConnectTimeout(CONNECT_TIME_OUT);
-                urlConnection.connect();
+        try {
+            //Making the connection
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod(REQUEST_METHOD);
+            urlConnection.setReadTimeout(READ_TIME_OUT);
+            urlConnection.setConnectTimeout(CONNECT_TIME_OUT);
+            urlConnection.connect();
 
-                int response = urlConnection.getResponseCode();
-                if (response == GOOD_RESPONSE) {
-                    InputStream inputStream = urlConnection.getInputStream();
-                    jsonResponse = readInputStream(inputStream);
-                } else if (response == BAD_RESPONSE || response == SERVICE_UNAVAILABLE) {
-                    return jsonResponse; // null
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
+            int response = urlConnection.getResponseCode();
+            if (response == GOOD_RESPONSE) {
+                InputStream inputStream = urlConnection.getInputStream();
+                jsonResponse = readInputStream(inputStream);
+            } else if (response == BAD_RESPONSE || response == SERVICE_UNAVAILABLE) {
+                return jsonResponse; // null
             }
-            return jsonResponse;
+
+        } catch (IOException e) {
+            printLog(TAG,e,"IOException");
+            return null;
+        }
+        return jsonResponse;
     }
 
     private static String readInputStream(InputStream inputStream) {
@@ -109,7 +115,7 @@ public class Utils {
                 line = reader.readLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            printLog(TAG,e,"IOException");
             return null;
         }
         return builder.toString();
@@ -121,7 +127,7 @@ public class Utils {
         try {
             url = new URL(urlString);
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            printLog(TAG,e,"MalformedURLException");
             return null;
         }
         return url;

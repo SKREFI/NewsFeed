@@ -26,14 +26,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private EventAdapter adapter;
 
-    ListView listView = findViewById(R.id.list);
-    TextView tvErrorMessage = findViewById(R.id.mainactivity_error_message_textview);
-    ProgressBar progressBar = findViewById(R.id.mainactivity_indicator_progressbar);
+    ListView listView;
+    TextView tvErrorMessage;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        listView = findViewById(R.id.list);
+        tvErrorMessage = findViewById(R.id.mainactivity_error_message_textview);
+        progressBar = findViewById(R.id.mainactivity_indicator_progressbar);
 
         setUI();
 
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         boolean isConected = networkInfo != null && networkInfo.isConnectedOrConnecting();
 
         if(isConected){
-            getLoaderManager().initLoader(0,null,this).forceLoad();
+            getLoaderManager().initLoader(0,null,this);
         }else{
             listView.setVisibility(View.GONE);
             tvErrorMessage.setText(R.string.no_internet_message);
