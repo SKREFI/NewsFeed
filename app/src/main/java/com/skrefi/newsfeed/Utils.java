@@ -30,7 +30,7 @@ public class Utils {
     private static final String TAG = Utils.class.getSimpleName();
 
     public static void printLog(String tag ,Exception e , String msg){
-        Log.e(tag , "ctrl_f_mee Error: " + msg + e );
+        Log.e(tag, "ctrl_f_mee Error: " + msg + e );
     }
 
     public static List<Event> fetchEventsData(String urlString) {
@@ -64,7 +64,7 @@ public class Utils {
             for (int i = 0; i < results.length(); i++) {
                 JSONObject object = results.getJSONObject(i);
                 String title = object.getString("webTitle");
-                String category = object.getString("");
+                String category = object.getString("sectionName");
                 String author = object.getJSONArray(TAG).getJSONObject(0).getString("webTitle");
                 String date = object.getString("webPublicationDate");
                 String url = object.getString("webUrl");
