@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         tvErrorMessage = findViewById(R.id.mainactivity_error_message_textview);
         progressBar = findViewById(R.id.mainactivity_indicator_progressbar);
 
+        listView.setEmptyView(tvErrorMessage);
+
         setUI();
 
         ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(CONNECTIVITY_SERVICE);
