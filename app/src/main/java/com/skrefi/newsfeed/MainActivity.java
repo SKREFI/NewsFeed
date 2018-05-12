@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    private static final String URL_API = "https://content.guardianapis.com/search?q=debate&tag=politics/politics&from-date=2014-01-01&api-key=test";
+    private static final String URL_API = "https://content.guardianapis.com/search?api-key=183ff7b6-9144-47ff-800c-dd77882d5d0c&show-tags=contributor";
 
     private EventAdapter adapter;
 
