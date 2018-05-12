@@ -65,7 +65,7 @@ public class Utils {
                 JSONObject object = results.getJSONObject(i);
                 String title = object.getString("webTitle");
                 String category = object.getString("sectionName");
-                String author = object.getJSONArray("tags").getJSONObject(0).getString("author");
+                String author = object.getJSONArray("tags").getJSONObject(0).getString("webTitle");
                 String date = object.getString("webPublicationDate");
                 String url = object.getString("webUrl");
                 events.add(new Event(title, category, author, date, url));
