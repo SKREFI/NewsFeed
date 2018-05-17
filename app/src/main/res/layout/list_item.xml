@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
-    card_view:cardCornerRadius="4dp">
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="10dp">
 
     <LinearLayout
         android:padding="8dp"
@@ -16,33 +17,35 @@
             android:id="@+id/template_title_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.70"
-            android:textSize="24dp"
-            tools:text="This is the title of the event!  aaaaaaaaaaaaaaaaaaaaaaaaa      " />
+            android:layout_weight="0.60"
+            android:textSize="20sp"
+            tools:text="This is the title of the event!" />
 
         <LinearLayout
+            android:paddingLeft="8dp"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight=".20"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/template_category_textview"
                 style="@style/smallRightText"
-                android:layout_weight="0.33"
+                android:layout_weight=".33"
                 tools:text="Sport"/>
 
             <TextView
                 android:id="@+id/template_author_textview"
                 style="@style/smallRightText"
-                android:layout_weight="0.33"
+                android:layout_weight=".33"
                 tools:text="SKREFI"/>
 
             <TextView
                 android:id="@+id/template_date_textview"
                 style="@style/smallRightText"
-                android:layout_weight="0.33"
-                tools:text="09-May-2018 19:01" />
+                android:layout_weight=".33"
+                tools:text="09-May-2018" />
+
 
         </LinearLayout>
 

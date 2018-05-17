@@ -8,7 +8,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -44,15 +47,17 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(CONNECTIVITY_SERVICE);
 
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        boolean isConected = networkInfo != null && networkInfo.isConnectedOrConnecting();
+        boolean isConnected = networkInfo != null && networkInfo.isConnectedOrConnecting();
 
-        if(isConected){
+        if(isConnected){
             getLoaderManager().initLoader(0,null,this);
         }else{
             listView.setVisibility(View.GONE);
             tvErrorMessage.setText(R.string.no_internet_message);
             tvErrorMessage.setVisibility(View.VISIBLE);
         }
+
+        
     }
 
     private void setUI(){
@@ -93,6 +98,24 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             tvErrorMessage.setVisibility(View.VISIBLE);
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        if(id == R.id.action_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 
     @Override
     public void onLoaderReset(Loader<List<Event>> loader) {

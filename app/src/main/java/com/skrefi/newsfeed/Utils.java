@@ -48,7 +48,7 @@ public class Utils {
             jsonResponse = makeHttpRequest(url);
             events = getDataFromJsonResponse(jsonResponse);
         } catch (NullPointerException e) {
-            printLog(TAG,e,"NullPointerException");
+            printLog(TAG,e,"NullPointerException (fetchEventsData)");
             return null;
         }
         return events;
@@ -65,13 +65,22 @@ public class Utils {
                 JSONObject object = results.getJSONObject(i);
                 String title = object.getString("webTitle");
                 String category = object.getString("sectionName");
-                String author = object.getJSONArray("tags").getJSONObject(0).getString("webTitle");
-                String date = object.getString("webPublicationDate");
+                String author;
+                if(object.getJSONArray("tags").length()>0)
+                    if(object.getJSONArray("tags").getJSONObject(0).getString("webTitle").length()>0)
+                        author = "N/A";
+                    //if(object.getJSONArray("tags").has("webTitle"))    .has() is not valid, as the reviewer told me (you may be the same) so I hope this above IFs work :)
+
+                author = object.getJSONArray("tags").getJSONObject(0).getString("webTitle");
+                String date = object.getString("webPublicationDate"); //Format: 2018-05-12T20:02:09Z
+
+                date = date.replace("T"," ");
+                date = date.replace("Z"," ");
                 String url = object.getString("webUrl");
                 events.add(new Event(title, category, author, date, url));
             }
         } catch (JSONException e) {
-            printLog(TAG,e,"JSONException");
+            printLog(TAG,e,"JSONException (getDataFromJsonResponse)");
             return null;
         }
         return events;
@@ -96,7 +105,7 @@ public class Utils {
             }
 
         } catch (IOException e) {
-            printLog(TAG,e,"IOException");
+            printLog(TAG,e,"IOException (makeHttpRequest)");
             return null;
         }
         return jsonResponse;
@@ -115,7 +124,7 @@ public class Utils {
                 line = reader.readLine();
             }
         } catch (IOException e) {
-            printLog(TAG,e,"IOException");
+            printLog(TAG,e,"IOException (readInputStream)");
             return null;
         }
         return builder.toString();
@@ -127,7 +136,7 @@ public class Utils {
         try {
             url = new URL(urlString);
         } catch (MalformedURLException e) {
-            printLog(TAG,e,"MalformedURLException");
+            printLog(TAG,e,"MalformedURLException (createUrl)");
             return null;
         }
         return url;
