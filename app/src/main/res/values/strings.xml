@@ -11,4 +11,14 @@
     <string name="settings_sort_by_TAG" translatable="false">sort_by</string>
     <string name="setting_sort_by_default" translatable="false">date</string>
 
+    <string-array name="topics">
+
+        <item>news</item>
+        <item>opinion</item>
+        <item>culture</item>
+        <item>politics</item>
+        <item></item>
+
+    </string-array>
+
 </resources>
