@@ -28,6 +28,7 @@ import static com.skrefi.newsfeed.Constants.SERVICE_UNAVAILABLE;
 
 public class Utils {
     private static final String TAG = Utils.class.getSimpleName();
+    public static final String EMPTY_NAME = "";
 
     public static void printLog(String tag ,Exception e , String msg){
         Log.e(tag, "ctrl_f_mee Error: " + msg + e );

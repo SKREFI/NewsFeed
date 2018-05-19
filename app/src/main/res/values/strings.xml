@@ -11,14 +11,22 @@
     <string name="settings_sort_by_TAG" translatable="false">sort_by</string>
     <string name="setting_sort_by_default" translatable="false">date</string>
 
-    <string-array name="topics">
 
-        <item>news</item>
-        <item>opinion</item>
-        <item>culture</item>
-        <item>politics</item>
-        <item></item>
+    <string name="tag_list_label">Order By Tag</string>
 
-    </string-array>
+    <string name="date_list_label">Order By Date</string>
+    <string name="date_list_key" translatable="false">order_by_date</string>
+    <string name="date_list_default_value" translatable="false">@string/date_list_2018_default_value</string>
+
+    <string name="date_list_2018_label">2018</string>
+    <string name="date_list_2017_label">2017</string>
+    <string name="date_list_2016_label">2016</string>
+    <string name="date_list_2015_label">2015</string>
+
+    <string name="date_list_2018_default_value" translatable="false">2018-01-01</string>
+
+    <string name="date_list_2017_default_value" translatable="false">2017-01-01</string>
+    <string name="date_list_2016_default_value" translatable="false">2016-01-01</string>
+    <string name="date_list_2015_default_value" translatable="false">2015-01-01</string>
 
 </resources>
