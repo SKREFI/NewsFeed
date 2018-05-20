@@ -11,6 +11,7 @@
     <string name="settings_sort_by_TAG" translatable="false">sort_by</string>
     <string name="setting_sort_by_default" translatable="false">date</string>
 
+    <string name="tag_list_default_value" translatable="false">sport</string>
 
     <string name="tag_list_label">Order By Tag</string>
 
@@ -24,7 +25,6 @@
     <string name="date_list_2015_label">2015</string>
 
     <string name="date_list_2018_default_value" translatable="false">2018-01-01</string>
-
     <string name="date_list_2017_default_value" translatable="false">2017-01-01</string>
     <string name="date_list_2016_default_value" translatable="false">2016-01-01</string>
     <string name="date_list_2015_default_value" translatable="false">2015-01-01</string>

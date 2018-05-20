@@ -13,6 +13,7 @@
     <ListPreference
         android:title="Order By Date"
         android:entries="@array/date_labels_order_by"
+        android:entryValues="@array/date_values_order_by"
         android:defaultValue="2018-01-01"
         android:key="@string/date_list_key"/>
 
